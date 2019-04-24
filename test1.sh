@@ -7,7 +7,7 @@ function pause(){
 #
 echo This script might leave your system unusable. I made 
 echo this for new installations only
-echo  
+
 #
 pause 'Press [Enter] key to continue... or Ctrl+C to abort'
 #
@@ -15,7 +15,7 @@ pause 'Press [Enter] key to continue... or Ctrl+C to abort'
 #
 # SOFTWARE REMOVAL
 #
-reset
+
 #echo Removing packages not required. This still leaves a 
 #echo running system with xorg and xfce installed. 
 #echo It's removing 636 packages, this may take a while.  
@@ -36,7 +36,7 @@ reset
 #
 # INSTALLATION
 #
-echo Let's install some tools 
+
 
 pause 'Press [Enter] key to continue... or Ctrl+C to abort'
 
