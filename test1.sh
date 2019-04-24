@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Cleanup script for MX Linux 
-#
+# Version 1.1
 #
 # The function is to provide a way to verify if you actually wish to run it. 
 # This is used in the beginning and at the end, before the reboot. 
