@@ -7,21 +7,42 @@ function pause(){
 
 
 #
+
 echo This script might leave your system unusable. I made 
 echo this for new installations only
 echo  
+
 #
 pause 'Press [Enter] key to continue... or Ctrl+C to abort'
-
+#
+#
+#
+# SOFTWARE REMOVAL
 #
 reset
 echo Removing packages not required. This still leaves a 
 echo running system with xorg and xfce installed. 
-echo  
+echo It's removing 636 packages, this may take a while.  
+#
+# Every package has it's own line, this makes it easier to add and remove 
+# packages. It does provide a better readability. 
+# This also gives the least amount of chance of errors.
+#
 #
 pause 'Press [Enter] key to continue... or Ctrl+C to abort'
 #
+#
 reset
+
+packagelist=(
+  package1 # Inline Comments
+  # Multiline Comments too
+  package2
+  # Package description goes here
+  # Detailed descriptions..
+)
+sudo apt-get install ${packagelist[@]}
+
 apt-get -y remove adobe-flash-properties-gtk
 apt-get -y remove adobe-flashplugin
 apt-get -y remove arc-theme
@@ -659,17 +680,24 @@ apt-get -y remove python3-pexpect
 apt-get -y remove python3-ptyprocess
 apt-get -y remove python3-requests 
 apt-get -y remove python3-urllib3
+apt-get -y remove gtkhash-common 
 #
 #
 reset
+#
+#
+#
+# INSTALLATION
+#
 echo Let's install some tools 
 pause 'Press [Enter] key to continue... or Ctrl+C to abort'
+#
 #
 apt-get -y install ncdu
 apt-get -y install localepurge
 #
 reset
-
+#
 echo No more apt changes, let's clean, autoclean 
 echo and autoremove just in case. 
 #
@@ -677,6 +705,11 @@ pause 'Press [Enter] key to continue... or Ctrl+C to abort'
 apt-get clean
 apt-get autoclean
 apt-get autoremove -y 
+#
+#
+#
+#
+# REMOVING UNUSED LOCALES
 #
 #
 echo Let's clean locales. 
@@ -697,7 +730,13 @@ echo EN_US.UTF-8 >> /etc/locale.nopurge
 localepurge
 #
 #
-# We don't need backgrounds. 
+#
+#
+# REMOVING UNNEEDED FILES
+#
+#
+#
+# We don't need backgrounds images.
 #
 Echo remove backgrounds
 pause 'Press [Enter] key to continue... or Ctrl+C to abort'
@@ -710,12 +749,21 @@ rm -rf /usr/share/backgrounds/MXLinux
 rm -rf /usr/share/backgrounds/xfce
 #
 #
+#
+#
+# CHANGING THE RUNLEVEL
+#
 # Let's change the runlevel to runlevel 3 to boot in multi 
 # user mode with networking, but without a graphical environment. 
 #
 echo Let's set runlevel 3 
 pause 'Press [Enter] key to continue... or Ctrl+C to abort'
 sed -i 's/id:5/id:3/g' /etc/inittab 
+#
+#
+#
+#
+# DISABLING THE BOOT SCREEN
 #
 #
 # I don't like graphical boot screens. Makes it more difficult 
