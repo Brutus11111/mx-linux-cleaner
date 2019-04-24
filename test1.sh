@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Cleanup script for MX Linux 
-# Version 1.1
+# Version 1.2
 #
 # The function is to provide a way to verify if you actually wish to run it. 
 # This is used in the beginning and at the end, before the reboot. 
@@ -688,7 +688,7 @@ apt-get -y remove plymouth-x11
 # Add software as you please 
 #
 apt-get -y install ncdu
-apt-get -y install localepurge
+
 #
 #
 # Now we can clean up apt-get 
@@ -714,6 +714,13 @@ apt-get upgrade -y
 # The echo's create a new document that localepurge 
 # uses to keep the locales you actually need. 
 #
+echo MANDELETE > /etc/locale.nopurge
+echo SHOWFREEDSPACE >> /etc/locale.nopurge
+echo QUICKNDIRTYCALC  >> /etc/locale.nopurge
+echo VERBOSE >> /etc/locale.nopurge
+echo en_US >> /etc/locale.nopurge
+echo EN_US.UTF-8 >> /etc/locale.nopurge
+apt-get -y install localepurge
 echo MANDELETE > /etc/locale.nopurge
 echo SHOWFREEDSPACE >> /etc/locale.nopurge
 echo QUICKNDIRTYCALC  >> /etc/locale.nopurge
