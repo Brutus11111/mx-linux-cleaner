@@ -37,9 +37,12 @@ reset
 # INSTALLATION
 #
 echo Let's install some tools 
+
 pause 'Press [Enter] key to continue... or Ctrl+C to abort'
+
 #
 #
+
 apt-get -y install ncdu
 apt-get -y install localepurge
 #
